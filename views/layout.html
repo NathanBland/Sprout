@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>{% block title %}Sprout {% endblock %}</title>
+    {% block head %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+        <link rel="stylesheet" href="/css/kube.min.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+    
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+        <script src="/scripts/vendors/kube.min.js"></script>
+    {% endblock %}
+</head>
+
+<body>
+    <header class="group">
+        <nav class="navbar navbar-left">
+            <ul>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
+        <nav class="navbar navbar-right">
+            <ul class="layout-auth">
+                <li>Sign up</li>
+                <li>Login</li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+  {% parent %}
+  <!--<link rel="stylesheet" href="custom.css">-->
+{% endblock %}
+
+{% block content %}
+  <ul>
+    {% for section in sections %}
+    
+      <li>{{ section.title }}</li>
+  
+    {% endfor %}
+  </ul>
+{% endblock %}

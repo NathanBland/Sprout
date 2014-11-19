@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+  {% parent %}
+  <!--<link rel="stylesheet" href="custom.css">-->
+{% endblock %}
+
+{% block content %}
+
+<article>
+  {% for x in sections %}
+    {% if loop.first %}<div id="accordion-2">{% endif %}
+    <a href="#panel{{ loop.index }}" class="accordion-title">{{ x.title }}</a>
+    <div id="panel{{ loop.index }}" class="accordion-panel">{{ x.description }}</div>
+    {% if loop.last %}</div>{% endif %}
+ {% endfor %}    
+</article>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="lessonsAccordion.js"></script>
+{% endblock %}
