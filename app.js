@@ -1,23 +1,44 @@
-var Hapi = require('hapi');
-var server = new Hapi.Server(process.env.IP, process.env.PORT);
+var express = require('express');
+var stylus = require('stylus');
+var mongoose = require('mongoose');
 var routes = require('./routes/routes');
-var qs = require("qs");
-var auth = require('./auth');
-var bell = require('bell');
+var app = express();
+
+//config and connect to database
+var sprout = require('./models/mongooseModel');
+
+app.set('dbhost', process.env.IP || 'localhost');
+app.set('dbname', 'sprout');
+
+mongoose.connect('mongodb://' + app.get('dbhost') + '/' + app.get('dbname'));
+
+
+//set css preprocessor
+app.use(stylus.middleware(__dirname + '/public/css'));
+
 
 //set view engine
-server.views({
-    engines: {
-        html : require('swig')
-        },
-        path: './views'
-    });
+var engines = require('consolidate');
+
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+app.engine('html', engines.swig);
+
+
+//set static files
+app.use(express.static(__dirname + '/public'));
+
 
 //pass in routes 
-server.route(routes);
+app.use(routes);
 
-// start up server
-server.start(function () {
-    console.log('Server running at:', server.info.uri);
+
+// config and start up server
+app.set('ip', process.env.IP || '127.0.0.1');
+app.set('port', process.env.PORT || '1337');
+
+var server = app.listen(app.get('port'), app.get('ip'), function() {
+    var address = server.address();
+    console.log('Server running at: %s:%s', address.address, address.port);
 });
 

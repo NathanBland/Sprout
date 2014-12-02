@@ -7,12 +7,19 @@
   <!--<link rel="stylesheet" href="custom.css">-->
 {% endblock %}
 
+{% block nav %}
+  {% parent %}
+{% endblock %}
+
 {% block content %}
-  <ul>
+  
+
+  <ul> <!--want to implement a way to know how many courses their are and input that number in "blocks-{{insertCourse#}} -->
     {% for section in sections %}
     
       <li>{{ section.title }}</li>
   
     {% endfor %}
   </ul>
+  
 {% endblock %}

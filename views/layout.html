@@ -17,19 +17,24 @@
 </head>
 
 <body>
+{% block nav%}
     <header class="group">
         <nav class="navbar navbar-left">
             <ul>
                 <li><a href="/">Home</a></li>
+                <li><a href="/classes">Classes</a></li>
+                <li><a href="/classes/lessons">Lessons</a></li>
+                <li><a href="/classes/lessons/sections">Sections</a></li>
             </ul>
         </nav>
         <nav class="navbar navbar-right">
             <ul class="layout-auth">
-                <li>Sign up</li>
-                <li>Login</li>
+                <li><a href="/register">Sign up</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
         </nav>
     </header>
+{% endblock %}    
     {% block content %}{% endblock %}
     {% block scripts %}{% endblock %}
 </body>
