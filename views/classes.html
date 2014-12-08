@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+  {% parent %}
+  <!--<link rel="stylesheet" href="custom.css">-->
+{% endblock %}
+
+{% block nav %}
+  {% parent %}
+{% endblock %}
+
+{% block content %}
+  
+<main class="units-row units-padding">
+  <article class="units-row-end">
+    <section class="unit-75">
+    {% for course in classes %}
+      <h1>{{ course.title }}</h1>
+      <p>{{ course.desc }}</p>
+      {% for lesson in course.lessons %} {% if loop.first %}
+      <div id="accordion-2">{% endif %}
+        <div class="units-row">
+          <a href="#panel{{ loop.index }}" class="accordion-title">{{ lesson.title }} Lesson: {{lesson.lessonId}}<span class="accordion-toggle accordion-toggle-closed"></span></a>
+          <div id="panel{{ loop.index }}" class="accordion-panel units-row-end">
+            <div class="unit-70">{{ lesson.desc }}</div>
+            
+            <button class="btn btn-green btn-outline">ENROLL</button>
+          </div>
+        </div>
+        {% if loop.last %}</div>{% endif %}{% endfor %}{% endfor %}
+    </section>
+  </article>
+</main>
+
+{% endblock %}

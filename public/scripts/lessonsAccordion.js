@@ -1,3 +1,3 @@
 $(function() {
-    $('#accordion2').accordion();
+    $('#accordion-2').accordion();
 });

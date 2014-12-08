@@ -1,0 +1,51 @@
+{% extends 'layout.html' %} 
+  {% block title %} {{ lesson.title }}{% endblock %} 
+  {% block head %} 
+    {% parent %}
+  <!--<link rel="stylesheet" href="custom.css">-->
+  {% endblock %} 
+  {% block nav %} 
+    {% parent %} 
+  {% endblock %} 
+{% block content %}
+<main class="units-row units-padding">
+  <article class="units-row-end">
+    <section class="unit-75">
+      <h1>{{ lesson.title }}</h1>
+      <p>{{ lesson.desc }}</p>
+      {% for x in lesson.sections %} {% if loop.first %}
+      <div id="accordion-2">{% endif %}
+        <div class="units-row">
+          <a href="#panel{{ loop.index }}" class="accordion-title">{{ x.title }}<span class="accordion-toggle accordion-toggle-closed"></span></a>
+          <div id="panel{{ loop.index }}" class="accordion-panel units-row-end">
+            <div class="unit-70">{{ x.desc }}</div>
+            <section class="lessons unit-30">
+              <a href="/class/{{course.permalink}}/lesson/lesson-{{lesson.lessonId}}/section/{{x.sectionId}}"><button class="btn btn-green btn-outline">Start</button></a>
+              <div class="pie-wrapper progress-80 style-2">
+                <span class="label">80<span class="smaller">%</span></span>
+                <div class="pie">
+                  <div class="left-side half-circle"></div>
+                  <div class="right-side half-circle"></div>
+                </div>
+                <div class="shadow"></div>
+              </div>
+
+            </section>
+          </div>
+        </div>
+        {% if loop.last %}</div>{% endif %} {% endfor %}
+    </section>
+    <div class="unit-25 progress-wheel">
+      <div class="pie-wrapper lesson-pie progress-70">
+        <span class="label">70<span class="smaller">%</span></span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+{% endblock %} 
+  {% block scripts %} 
+{% endblock %}

@@ -7,12 +7,15 @@
     {% block head %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+        <link rel="icon" href="/images/SproutLogo.png" type="image/x-icon">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        
         <link rel="stylesheet" href="/css/kube.min.css" />
         <link rel="stylesheet" href="/css/styles.css" />
     
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-        <script src="/scripts/vendors/kube.min.js"></script>
+        <script src="/scripts/vendors/kube.js"></script>
+        <script src="/scripts/lessonsAccordion.js"></script>
     {% endblock %}
 </head>
 
@@ -23,14 +26,18 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/classes">Classes</a></li>
-                <li><a href="/classes/lessons">Lessons</a></li>
-                <li><a href="/classes/lessons/sections">Sections</a></li>
+                <li><a href="/purpose">/Purpose</a></li>
+                <li><a href="/contact">Get In Touch</a></li>
             </ul>
         </nav>
         <nav class="navbar navbar-right">
             <ul class="layout-auth">
+                {% if user %}
+                <li><a href="/logout">Sign Out</a></li>
+                {% else %}
                 <li><a href="/register">Sign up</a></li>
                 <li><a href="/login">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

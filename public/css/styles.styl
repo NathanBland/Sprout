@@ -1,0 +1,193 @@
+// Utilities
+prefix(property, value)
+  for vendor in 'webkit' 'moz' 'o'
+    -{vendor}-{property} value
+  {property} value
+
+transform()
+  prefix 'transform' arguments
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*
+html, 
+body {
+  background: #ecf0f1;
+  color: #444;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+}
+*/
+
+.pie-wrapper {
+  
+  size = 200px;
+
+  display: inline-block;
+  height: size;
+  margin: 10px;
+  position: relative;
+  width: size;
+  
+  .pie {
+    clip: rect(0, size, size, (size / 2));
+    height: size;
+    position: absolute;
+    width: size;
+  
+    .half-circle {
+      border: (size / 10) solid #e67e22;
+      border-radius: 50%;
+      clip: rect(0, (size / 2), size, 0);
+      height: size;
+      position: absolute;
+      width: size;
+    }
+  }
+  
+  .label {
+    background: #34495e;
+    border-radius: 50%;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: 3em;
+    height: size - (size * .2);
+    left: 10%;
+    line-height: 3em;
+    position: absolute;
+    text-align: center;
+    top: 10%;
+    width: size - (size * .2);
+    
+    .smaller {
+      color: #bdc3c7;
+      font-size: .45em;
+      padding-bottom: 20px;
+      vertical-align: super;
+    }
+  }
+  
+  &.style-2 {
+    .shadow {
+      border: (size / 10) solid #bdc3c7;
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .label {
+      background: none;
+      color: #7f8c8d;
+    
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+}
+
+progress-states = 0...101
+for p in progress-states
+  .progress-{p}
+    .pie
+      .left-side
+        transform: rotate((p * 3.6)deg)
+
+      if p > 50
+        clip: rect(auto, auto, auto, auto)
+        .right-side
+          transform: rotate(180deg)
+
+// Customize the border color based on progress:
+progress-color(hue)
+  for p in progress-states
+    .progress-{p}
+      .pie
+        .half-circle
+          border-color: tint(hue, (100 - p))
+
+// Uncomment to globally adjust border color based on progress
+/*
+  progress-color(#e67e22);
+*/
+
+
+// Use a different color for lessons.
+.lessons
+  progress-color: #1abc9c;
+
+  // Or use a solid custom color for lessons
+  /*
+  .pie-wrapper .pie .half-circle
+    border-color: #1abc9c
+  */
+
+/******************** End Pie-Wrapper Styles ******************/
+
+/*********************** Button Styles *********************/
+/*** Classes Buttons ***/
+.btn-green.btn-outline, input.btn-green.btn-outline[type="submit"] {
+    margin-top: 2em;
+    margin-left: 4em;
+}
+
+/********************** Nav Styles ****************************/
+header.group {
+    background-color:rgba(136, 176, 232, .7);
+}
+
+.navbar {
+    padding: 1.65em;
+}
+.navbar a {
+  color:white;
+}
+.navbar a:hover {
+  color:white;
+}
+/********************** End Nav Styles ************************/
+
+/********************** General Styles ************************/
+.lesson-pie{
+    margin-top: 26%;
+}
+
+.homepage-image{
+  background-image: url('/images/Index-page-chalk.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.landing h1 {
+  font-size: 7em;
+  color: white;
+}
+.landing .title {
+  text-align: center;
+}
+.title img {
+  width: .75em;
+  margin-left: 0.06em;
+  margin-right: 0.06em;
+}
+.landing h1 span {
+  color: rgba(78, 255, 11, 1);
+}
+.title p {
+  font-size: 2em;
+  color: white;
+}
+.landing label {
+  color: white;
+}
+
+@media screen and (max-width:415px){
+  .landing h1 {
+    font-size: 5em;
+    }
+}

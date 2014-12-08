@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+  {% parent %}
+  <!--<link rel="stylesheet" href="custom.css">-->
+{% endblock %}
+
+{% block content %}
+<main class="units-row units-padding">
+    <article class="units-row-end">
+        <section class="unit-75">
+            <h1>Login To Sprout</h1>
+            <form method="post" action="" class="forms">
+                <label>
+                    Email
+                    <input type="email" name="username" class="width-50" />
+                </label>
+                <label>
+                    Password
+                    <input type="password" name="password" class="width-50" />
+                </label>
+                <p>
+                    <button class="btn btn-blue">Log in</button>
+                    <button class="btn">Cancel</button>
+                </p>
+            </form>
+        </section>
+    </article>
+</main>
+{% endblock %}

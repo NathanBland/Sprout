@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+  {% parent %}
+  <!--<link rel="stylesheet" href="custom.css">-->
+{% endblock %}
+
+{% block content %}
+<main class="units-row units-padding">
+    <article class="units-row-end">
+        <section class="unit-75">
+            <h1>Your Classes</h1>
+            <p>Here you can access all of your classes, and see your progress on all of them. </p>
+        </section>
+    </article>
+</main>
+{% endblock %}

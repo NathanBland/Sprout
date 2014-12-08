@@ -1,10 +1,1491 @@
-body {
-    background-color: #F5EEEB;
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.group {
-    background-color: #CCD9D7;
+/*
+html, 
+body {
+  background: #ecf0f1;
+  color: #444;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+}
+*/
+.pie-wrapper {
+  display: inline-block;
+  height: 200px;
+  margin: 10px;
+  position: relative;
+  width: 200px;
+}
+.pie-wrapper .pie {
+  clip: rect(0, 200px, 200px, 100px);
+  height: 200px;
+  position: absolute;
+  width: 200px;
+}
+.pie-wrapper .pie .half-circle {
+  border: 20px solid #e67e22;
+  border-radius: 50%;
+  clip: rect(0, 100px, 200px, 0);
+  height: 200px;
+  position: absolute;
+  width: 200px;
+}
+.pie-wrapper .label {
+  background: #34495e;
+  border-radius: 50%;
+  color: #ecf0f1;
+  cursor: default;
+  display: block;
+  font-size: 3em;
+  height: 160px;
+  left: 10%;
+  line-height: 3em;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  width: 160px;
+}
+.pie-wrapper .label .smaller {
+  color: #bdc3c7;
+  font-size: 0.45em;
+  padding-bottom: 20px;
+  vertical-align: super;
+}
+.pie-wrapper.style-2 .shadow {
+  border: 20px solid #bdc3c7;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+.pie-wrapper.style-2 .label {
+  background: none;
+  color: #7f8c8d;
+}
+.pie-wrapper.style-2 .label .smaller {
+  color: #bdc3c7;
+}
+.progress-0 .pie .left-side {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.progress-1 .pie .left-side {
+  -webkit-transform: rotate(3.6deg);
+  -moz-transform: rotate(3.6deg);
+  -o-transform: rotate(3.6deg);
+  transform: rotate(3.6deg);
+}
+.progress-2 .pie .left-side {
+  -webkit-transform: rotate(7.2deg);
+  -moz-transform: rotate(7.2deg);
+  -o-transform: rotate(7.2deg);
+  transform: rotate(7.2deg);
+}
+.progress-3 .pie .left-side {
+  -webkit-transform: rotate(10.8deg);
+  -moz-transform: rotate(10.8deg);
+  -o-transform: rotate(10.8deg);
+  transform: rotate(10.8deg);
+}
+.progress-4 .pie .left-side {
+  -webkit-transform: rotate(14.4deg);
+  -moz-transform: rotate(14.4deg);
+  -o-transform: rotate(14.4deg);
+  transform: rotate(14.4deg);
+}
+.progress-5 .pie .left-side {
+  -webkit-transform: rotate(18deg);
+  -moz-transform: rotate(18deg);
+  -o-transform: rotate(18deg);
+  transform: rotate(18deg);
+}
+.progress-6 .pie .left-side {
+  -webkit-transform: rotate(21.6deg);
+  -moz-transform: rotate(21.6deg);
+  -o-transform: rotate(21.6deg);
+  transform: rotate(21.6deg);
+}
+.progress-7 .pie .left-side {
+  -webkit-transform: rotate(25.2deg);
+  -moz-transform: rotate(25.2deg);
+  -o-transform: rotate(25.2deg);
+  transform: rotate(25.2deg);
+}
+.progress-8 .pie .left-side {
+  -webkit-transform: rotate(28.8deg);
+  -moz-transform: rotate(28.8deg);
+  -o-transform: rotate(28.8deg);
+  transform: rotate(28.8deg);
+}
+.progress-9 .pie .left-side {
+  -webkit-transform: rotate(32.4deg);
+  -moz-transform: rotate(32.4deg);
+  -o-transform: rotate(32.4deg);
+  transform: rotate(32.4deg);
+}
+.progress-10 .pie .left-side {
+  -webkit-transform: rotate(36deg);
+  -moz-transform: rotate(36deg);
+  -o-transform: rotate(36deg);
+  transform: rotate(36deg);
+}
+.progress-11 .pie .left-side {
+  -webkit-transform: rotate(39.6deg);
+  -moz-transform: rotate(39.6deg);
+  -o-transform: rotate(39.6deg);
+  transform: rotate(39.6deg);
+}
+.progress-12 .pie .left-side {
+  -webkit-transform: rotate(43.2deg);
+  -moz-transform: rotate(43.2deg);
+  -o-transform: rotate(43.2deg);
+  transform: rotate(43.2deg);
+}
+.progress-13 .pie .left-side {
+  -webkit-transform: rotate(46.800000000000004deg);
+  -moz-transform: rotate(46.800000000000004deg);
+  -o-transform: rotate(46.800000000000004deg);
+  transform: rotate(46.800000000000004deg);
+}
+.progress-14 .pie .left-side {
+  -webkit-transform: rotate(50.4deg);
+  -moz-transform: rotate(50.4deg);
+  -o-transform: rotate(50.4deg);
+  transform: rotate(50.4deg);
+}
+.progress-15 .pie .left-side {
+  -webkit-transform: rotate(54deg);
+  -moz-transform: rotate(54deg);
+  -o-transform: rotate(54deg);
+  transform: rotate(54deg);
+}
+.progress-16 .pie .left-side {
+  -webkit-transform: rotate(57.6deg);
+  -moz-transform: rotate(57.6deg);
+  -o-transform: rotate(57.6deg);
+  transform: rotate(57.6deg);
+}
+.progress-17 .pie .left-side {
+  -webkit-transform: rotate(61.2deg);
+  -moz-transform: rotate(61.2deg);
+  -o-transform: rotate(61.2deg);
+  transform: rotate(61.2deg);
+}
+.progress-18 .pie .left-side {
+  -webkit-transform: rotate(64.8deg);
+  -moz-transform: rotate(64.8deg);
+  -o-transform: rotate(64.8deg);
+  transform: rotate(64.8deg);
+}
+.progress-19 .pie .left-side {
+  -webkit-transform: rotate(68.4deg);
+  -moz-transform: rotate(68.4deg);
+  -o-transform: rotate(68.4deg);
+  transform: rotate(68.4deg);
+}
+.progress-20 .pie .left-side {
+  -webkit-transform: rotate(72deg);
+  -moz-transform: rotate(72deg);
+  -o-transform: rotate(72deg);
+  transform: rotate(72deg);
+}
+.progress-21 .pie .left-side {
+  -webkit-transform: rotate(75.60000000000001deg);
+  -moz-transform: rotate(75.60000000000001deg);
+  -o-transform: rotate(75.60000000000001deg);
+  transform: rotate(75.60000000000001deg);
+}
+.progress-22 .pie .left-side {
+  -webkit-transform: rotate(79.2deg);
+  -moz-transform: rotate(79.2deg);
+  -o-transform: rotate(79.2deg);
+  transform: rotate(79.2deg);
+}
+.progress-23 .pie .left-side {
+  -webkit-transform: rotate(82.8deg);
+  -moz-transform: rotate(82.8deg);
+  -o-transform: rotate(82.8deg);
+  transform: rotate(82.8deg);
+}
+.progress-24 .pie .left-side {
+  -webkit-transform: rotate(86.4deg);
+  -moz-transform: rotate(86.4deg);
+  -o-transform: rotate(86.4deg);
+  transform: rotate(86.4deg);
+}
+.progress-25 .pie .left-side {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.progress-26 .pie .left-side {
+  -webkit-transform: rotate(93.60000000000001deg);
+  -moz-transform: rotate(93.60000000000001deg);
+  -o-transform: rotate(93.60000000000001deg);
+  transform: rotate(93.60000000000001deg);
+}
+.progress-27 .pie .left-side {
+  -webkit-transform: rotate(97.2deg);
+  -moz-transform: rotate(97.2deg);
+  -o-transform: rotate(97.2deg);
+  transform: rotate(97.2deg);
+}
+.progress-28 .pie .left-side {
+  -webkit-transform: rotate(100.8deg);
+  -moz-transform: rotate(100.8deg);
+  -o-transform: rotate(100.8deg);
+  transform: rotate(100.8deg);
+}
+.progress-29 .pie .left-side {
+  -webkit-transform: rotate(104.4deg);
+  -moz-transform: rotate(104.4deg);
+  -o-transform: rotate(104.4deg);
+  transform: rotate(104.4deg);
+}
+.progress-30 .pie .left-side {
+  -webkit-transform: rotate(108deg);
+  -moz-transform: rotate(108deg);
+  -o-transform: rotate(108deg);
+  transform: rotate(108deg);
+}
+.progress-31 .pie .left-side {
+  -webkit-transform: rotate(111.60000000000001deg);
+  -moz-transform: rotate(111.60000000000001deg);
+  -o-transform: rotate(111.60000000000001deg);
+  transform: rotate(111.60000000000001deg);
+}
+.progress-32 .pie .left-side {
+  -webkit-transform: rotate(115.2deg);
+  -moz-transform: rotate(115.2deg);
+  -o-transform: rotate(115.2deg);
+  transform: rotate(115.2deg);
+}
+.progress-33 .pie .left-side {
+  -webkit-transform: rotate(118.8deg);
+  -moz-transform: rotate(118.8deg);
+  -o-transform: rotate(118.8deg);
+  transform: rotate(118.8deg);
+}
+.progress-34 .pie .left-side {
+  -webkit-transform: rotate(122.4deg);
+  -moz-transform: rotate(122.4deg);
+  -o-transform: rotate(122.4deg);
+  transform: rotate(122.4deg);
+}
+.progress-35 .pie .left-side {
+  -webkit-transform: rotate(126deg);
+  -moz-transform: rotate(126deg);
+  -o-transform: rotate(126deg);
+  transform: rotate(126deg);
+}
+.progress-36 .pie .left-side {
+  -webkit-transform: rotate(129.6deg);
+  -moz-transform: rotate(129.6deg);
+  -o-transform: rotate(129.6deg);
+  transform: rotate(129.6deg);
+}
+.progress-37 .pie .left-side {
+  -webkit-transform: rotate(133.20000000000002deg);
+  -moz-transform: rotate(133.20000000000002deg);
+  -o-transform: rotate(133.20000000000002deg);
+  transform: rotate(133.20000000000002deg);
+}
+.progress-38 .pie .left-side {
+  -webkit-transform: rotate(136.8deg);
+  -moz-transform: rotate(136.8deg);
+  -o-transform: rotate(136.8deg);
+  transform: rotate(136.8deg);
+}
+.progress-39 .pie .left-side {
+  -webkit-transform: rotate(140.4deg);
+  -moz-transform: rotate(140.4deg);
+  -o-transform: rotate(140.4deg);
+  transform: rotate(140.4deg);
+}
+.progress-40 .pie .left-side {
+  -webkit-transform: rotate(144deg);
+  -moz-transform: rotate(144deg);
+  -o-transform: rotate(144deg);
+  transform: rotate(144deg);
+}
+.progress-41 .pie .left-side {
+  -webkit-transform: rotate(147.6deg);
+  -moz-transform: rotate(147.6deg);
+  -o-transform: rotate(147.6deg);
+  transform: rotate(147.6deg);
+}
+.progress-42 .pie .left-side {
+  -webkit-transform: rotate(151.20000000000002deg);
+  -moz-transform: rotate(151.20000000000002deg);
+  -o-transform: rotate(151.20000000000002deg);
+  transform: rotate(151.20000000000002deg);
+}
+.progress-43 .pie .left-side {
+  -webkit-transform: rotate(154.8deg);
+  -moz-transform: rotate(154.8deg);
+  -o-transform: rotate(154.8deg);
+  transform: rotate(154.8deg);
+}
+.progress-44 .pie .left-side {
+  -webkit-transform: rotate(158.4deg);
+  -moz-transform: rotate(158.4deg);
+  -o-transform: rotate(158.4deg);
+  transform: rotate(158.4deg);
+}
+.progress-45 .pie .left-side {
+  -webkit-transform: rotate(162deg);
+  -moz-transform: rotate(162deg);
+  -o-transform: rotate(162deg);
+  transform: rotate(162deg);
+}
+.progress-46 .pie .left-side {
+  -webkit-transform: rotate(165.6deg);
+  -moz-transform: rotate(165.6deg);
+  -o-transform: rotate(165.6deg);
+  transform: rotate(165.6deg);
+}
+.progress-47 .pie .left-side {
+  -webkit-transform: rotate(169.20000000000002deg);
+  -moz-transform: rotate(169.20000000000002deg);
+  -o-transform: rotate(169.20000000000002deg);
+  transform: rotate(169.20000000000002deg);
+}
+.progress-48 .pie .left-side {
+  -webkit-transform: rotate(172.8deg);
+  -moz-transform: rotate(172.8deg);
+  -o-transform: rotate(172.8deg);
+  transform: rotate(172.8deg);
+}
+.progress-49 .pie .left-side {
+  -webkit-transform: rotate(176.4deg);
+  -moz-transform: rotate(176.4deg);
+  -o-transform: rotate(176.4deg);
+  transform: rotate(176.4deg);
+}
+.progress-50 .pie .left-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-51 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-51 .pie .left-side {
+  -webkit-transform: rotate(183.6deg);
+  -moz-transform: rotate(183.6deg);
+  -o-transform: rotate(183.6deg);
+  transform: rotate(183.6deg);
+}
+.progress-51 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-52 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-52 .pie .left-side {
+  -webkit-transform: rotate(187.20000000000002deg);
+  -moz-transform: rotate(187.20000000000002deg);
+  -o-transform: rotate(187.20000000000002deg);
+  transform: rotate(187.20000000000002deg);
+}
+.progress-52 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-53 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-53 .pie .left-side {
+  -webkit-transform: rotate(190.8deg);
+  -moz-transform: rotate(190.8deg);
+  -o-transform: rotate(190.8deg);
+  transform: rotate(190.8deg);
+}
+.progress-53 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-54 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-54 .pie .left-side {
+  -webkit-transform: rotate(194.4deg);
+  -moz-transform: rotate(194.4deg);
+  -o-transform: rotate(194.4deg);
+  transform: rotate(194.4deg);
+}
+.progress-54 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-55 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-55 .pie .left-side {
+  -webkit-transform: rotate(198deg);
+  -moz-transform: rotate(198deg);
+  -o-transform: rotate(198deg);
+  transform: rotate(198deg);
+}
+.progress-55 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-56 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-56 .pie .left-side {
+  -webkit-transform: rotate(201.6deg);
+  -moz-transform: rotate(201.6deg);
+  -o-transform: rotate(201.6deg);
+  transform: rotate(201.6deg);
+}
+.progress-56 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-57 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-57 .pie .left-side {
+  -webkit-transform: rotate(205.20000000000002deg);
+  -moz-transform: rotate(205.20000000000002deg);
+  -o-transform: rotate(205.20000000000002deg);
+  transform: rotate(205.20000000000002deg);
+}
+.progress-57 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-58 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-58 .pie .left-side {
+  -webkit-transform: rotate(208.8deg);
+  -moz-transform: rotate(208.8deg);
+  -o-transform: rotate(208.8deg);
+  transform: rotate(208.8deg);
+}
+.progress-58 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-59 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-59 .pie .left-side {
+  -webkit-transform: rotate(212.4deg);
+  -moz-transform: rotate(212.4deg);
+  -o-transform: rotate(212.4deg);
+  transform: rotate(212.4deg);
+}
+.progress-59 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-60 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-60 .pie .left-side {
+  -webkit-transform: rotate(216deg);
+  -moz-transform: rotate(216deg);
+  -o-transform: rotate(216deg);
+  transform: rotate(216deg);
+}
+.progress-60 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-61 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-61 .pie .left-side {
+  -webkit-transform: rotate(219.6deg);
+  -moz-transform: rotate(219.6deg);
+  -o-transform: rotate(219.6deg);
+  transform: rotate(219.6deg);
+}
+.progress-61 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-62 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-62 .pie .left-side {
+  -webkit-transform: rotate(223.20000000000002deg);
+  -moz-transform: rotate(223.20000000000002deg);
+  -o-transform: rotate(223.20000000000002deg);
+  transform: rotate(223.20000000000002deg);
+}
+.progress-62 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-63 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-63 .pie .left-side {
+  -webkit-transform: rotate(226.8deg);
+  -moz-transform: rotate(226.8deg);
+  -o-transform: rotate(226.8deg);
+  transform: rotate(226.8deg);
+}
+.progress-63 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-64 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-64 .pie .left-side {
+  -webkit-transform: rotate(230.4deg);
+  -moz-transform: rotate(230.4deg);
+  -o-transform: rotate(230.4deg);
+  transform: rotate(230.4deg);
+}
+.progress-64 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-65 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-65 .pie .left-side {
+  -webkit-transform: rotate(234deg);
+  -moz-transform: rotate(234deg);
+  -o-transform: rotate(234deg);
+  transform: rotate(234deg);
+}
+.progress-65 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-66 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-66 .pie .left-side {
+  -webkit-transform: rotate(237.6deg);
+  -moz-transform: rotate(237.6deg);
+  -o-transform: rotate(237.6deg);
+  transform: rotate(237.6deg);
+}
+.progress-66 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-67 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-67 .pie .left-side {
+  -webkit-transform: rotate(241.20000000000002deg);
+  -moz-transform: rotate(241.20000000000002deg);
+  -o-transform: rotate(241.20000000000002deg);
+  transform: rotate(241.20000000000002deg);
+}
+.progress-67 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-68 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-68 .pie .left-side {
+  -webkit-transform: rotate(244.8deg);
+  -moz-transform: rotate(244.8deg);
+  -o-transform: rotate(244.8deg);
+  transform: rotate(244.8deg);
+}
+.progress-68 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-69 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-69 .pie .left-side {
+  -webkit-transform: rotate(248.4deg);
+  -moz-transform: rotate(248.4deg);
+  -o-transform: rotate(248.4deg);
+  transform: rotate(248.4deg);
+}
+.progress-69 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-70 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-70 .pie .left-side {
+  -webkit-transform: rotate(252deg);
+  -moz-transform: rotate(252deg);
+  -o-transform: rotate(252deg);
+  transform: rotate(252deg);
+}
+.progress-70 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-71 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-71 .pie .left-side {
+  -webkit-transform: rotate(255.6deg);
+  -moz-transform: rotate(255.6deg);
+  -o-transform: rotate(255.6deg);
+  transform: rotate(255.6deg);
+}
+.progress-71 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-72 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-72 .pie .left-side {
+  -webkit-transform: rotate(259.2deg);
+  -moz-transform: rotate(259.2deg);
+  -o-transform: rotate(259.2deg);
+  transform: rotate(259.2deg);
+}
+.progress-72 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-73 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-73 .pie .left-side {
+  -webkit-transform: rotate(262.8deg);
+  -moz-transform: rotate(262.8deg);
+  -o-transform: rotate(262.8deg);
+  transform: rotate(262.8deg);
+}
+.progress-73 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-74 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-74 .pie .left-side {
+  -webkit-transform: rotate(266.40000000000003deg);
+  -moz-transform: rotate(266.40000000000003deg);
+  -o-transform: rotate(266.40000000000003deg);
+  transform: rotate(266.40000000000003deg);
+}
+.progress-74 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-75 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-75 .pie .left-side {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.progress-75 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-76 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-76 .pie .left-side {
+  -webkit-transform: rotate(273.6deg);
+  -moz-transform: rotate(273.6deg);
+  -o-transform: rotate(273.6deg);
+  transform: rotate(273.6deg);
+}
+.progress-76 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-77 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-77 .pie .left-side {
+  -webkit-transform: rotate(277.2deg);
+  -moz-transform: rotate(277.2deg);
+  -o-transform: rotate(277.2deg);
+  transform: rotate(277.2deg);
+}
+.progress-77 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-78 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-78 .pie .left-side {
+  -webkit-transform: rotate(280.8deg);
+  -moz-transform: rotate(280.8deg);
+  -o-transform: rotate(280.8deg);
+  transform: rotate(280.8deg);
+}
+.progress-78 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-79 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-79 .pie .left-side {
+  -webkit-transform: rotate(284.40000000000003deg);
+  -moz-transform: rotate(284.40000000000003deg);
+  -o-transform: rotate(284.40000000000003deg);
+  transform: rotate(284.40000000000003deg);
+}
+.progress-79 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-80 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-80 .pie .left-side {
+  -webkit-transform: rotate(288deg);
+  -moz-transform: rotate(288deg);
+  -o-transform: rotate(288deg);
+  transform: rotate(288deg);
+}
+.progress-80 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-81 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-81 .pie .left-side {
+  -webkit-transform: rotate(291.6deg);
+  -moz-transform: rotate(291.6deg);
+  -o-transform: rotate(291.6deg);
+  transform: rotate(291.6deg);
+}
+.progress-81 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-82 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-82 .pie .left-side {
+  -webkit-transform: rotate(295.2deg);
+  -moz-transform: rotate(295.2deg);
+  -o-transform: rotate(295.2deg);
+  transform: rotate(295.2deg);
+}
+.progress-82 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-83 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-83 .pie .left-side {
+  -webkit-transform: rotate(298.8deg);
+  -moz-transform: rotate(298.8deg);
+  -o-transform: rotate(298.8deg);
+  transform: rotate(298.8deg);
+}
+.progress-83 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-84 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-84 .pie .left-side {
+  -webkit-transform: rotate(302.40000000000003deg);
+  -moz-transform: rotate(302.40000000000003deg);
+  -o-transform: rotate(302.40000000000003deg);
+  transform: rotate(302.40000000000003deg);
+}
+.progress-84 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-85 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-85 .pie .left-side {
+  -webkit-transform: rotate(306deg);
+  -moz-transform: rotate(306deg);
+  -o-transform: rotate(306deg);
+  transform: rotate(306deg);
+}
+.progress-85 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-86 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-86 .pie .left-side {
+  -webkit-transform: rotate(309.6deg);
+  -moz-transform: rotate(309.6deg);
+  -o-transform: rotate(309.6deg);
+  transform: rotate(309.6deg);
+}
+.progress-86 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-87 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-87 .pie .left-side {
+  -webkit-transform: rotate(313.2deg);
+  -moz-transform: rotate(313.2deg);
+  -o-transform: rotate(313.2deg);
+  transform: rotate(313.2deg);
+}
+.progress-87 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-88 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-88 .pie .left-side {
+  -webkit-transform: rotate(316.8deg);
+  -moz-transform: rotate(316.8deg);
+  -o-transform: rotate(316.8deg);
+  transform: rotate(316.8deg);
+}
+.progress-88 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-89 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-89 .pie .left-side {
+  -webkit-transform: rotate(320.40000000000003deg);
+  -moz-transform: rotate(320.40000000000003deg);
+  -o-transform: rotate(320.40000000000003deg);
+  transform: rotate(320.40000000000003deg);
+}
+.progress-89 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-90 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-90 .pie .left-side {
+  -webkit-transform: rotate(324deg);
+  -moz-transform: rotate(324deg);
+  -o-transform: rotate(324deg);
+  transform: rotate(324deg);
+}
+.progress-90 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-91 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-91 .pie .left-side {
+  -webkit-transform: rotate(327.6deg);
+  -moz-transform: rotate(327.6deg);
+  -o-transform: rotate(327.6deg);
+  transform: rotate(327.6deg);
+}
+.progress-91 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-92 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-92 .pie .left-side {
+  -webkit-transform: rotate(331.2deg);
+  -moz-transform: rotate(331.2deg);
+  -o-transform: rotate(331.2deg);
+  transform: rotate(331.2deg);
+}
+.progress-92 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-93 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-93 .pie .left-side {
+  -webkit-transform: rotate(334.8deg);
+  -moz-transform: rotate(334.8deg);
+  -o-transform: rotate(334.8deg);
+  transform: rotate(334.8deg);
+}
+.progress-93 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-94 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-94 .pie .left-side {
+  -webkit-transform: rotate(338.40000000000003deg);
+  -moz-transform: rotate(338.40000000000003deg);
+  -o-transform: rotate(338.40000000000003deg);
+  transform: rotate(338.40000000000003deg);
+}
+.progress-94 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-95 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-95 .pie .left-side {
+  -webkit-transform: rotate(342deg);
+  -moz-transform: rotate(342deg);
+  -o-transform: rotate(342deg);
+  transform: rotate(342deg);
+}
+.progress-95 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-96 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-96 .pie .left-side {
+  -webkit-transform: rotate(345.6deg);
+  -moz-transform: rotate(345.6deg);
+  -o-transform: rotate(345.6deg);
+  transform: rotate(345.6deg);
+}
+.progress-96 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-97 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-97 .pie .left-side {
+  -webkit-transform: rotate(349.2deg);
+  -moz-transform: rotate(349.2deg);
+  -o-transform: rotate(349.2deg);
+  transform: rotate(349.2deg);
+}
+.progress-97 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-98 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-98 .pie .left-side {
+  -webkit-transform: rotate(352.8deg);
+  -moz-transform: rotate(352.8deg);
+  -o-transform: rotate(352.8deg);
+  transform: rotate(352.8deg);
+}
+.progress-98 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-99 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-99 .pie .left-side {
+  -webkit-transform: rotate(356.40000000000003deg);
+  -moz-transform: rotate(356.40000000000003deg);
+  -o-transform: rotate(356.40000000000003deg);
+  transform: rotate(356.40000000000003deg);
+}
+.progress-99 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.progress-100 .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.progress-100 .pie .left-side {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.progress-100 .pie .right-side {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/*
+  progress-color(#e67e22);
+*/
+.lessons .progress-0 .pie .half-circle {
+  border-color: #fff;
+}
+.lessons .progress-1 .pie .half-circle {
+  border-color: #fcfefe;
+}
+.lessons .progress-2 .pie .half-circle {
+  border-color: #fafdfd;
+}
+.lessons .progress-3 .pie .half-circle {
+  border-color: #f8fcfc;
+}
+.lessons .progress-4 .pie .half-circle {
+  border-color: #f5fcfb;
+}
+.lessons .progress-5 .pie .half-circle {
+  border-color: #f3fbfa;
+}
+.lessons .progress-6 .pie .half-circle {
+  border-color: #f1faf9;
+}
+.lessons .progress-7 .pie .half-circle {
+  border-color: #eefaf8;
+}
+.lessons .progress-8 .pie .half-circle {
+  border-color: #ecf9f7;
+}
+.lessons .progress-9 .pie .half-circle {
+  border-color: #eaf8f6;
+}
+.lessons .progress-10 .pie .half-circle {
+  border-color: #e8f8f5;
+}
+.lessons .progress-11 .pie .half-circle {
+  border-color: #e5f7f4;
+}
+.lessons .progress-12 .pie .half-circle {
+  border-color: #e3f6f3;
+}
+.lessons .progress-13 .pie .half-circle {
+  border-color: #e1f6f2;
+}
+.lessons .progress-14 .pie .half-circle {
+  border-color: #def5f1;
+}
+.lessons .progress-15 .pie .half-circle {
+  border-color: #dcf4f0;
+}
+.lessons .progress-16 .pie .half-circle {
+  border-color: #daf4ef;
+}
+.lessons .progress-17 .pie .half-circle {
+  border-color: #d8f3ee;
+}
+.lessons .progress-18 .pie .half-circle {
+  border-color: #d5f2ed;
+}
+.lessons .progress-19 .pie .half-circle {
+  border-color: #d3f2ec;
+}
+.lessons .progress-20 .pie .half-circle {
+  border-color: #d1f1eb;
+}
+.lessons .progress-21 .pie .half-circle {
+  border-color: #cef0ea;
+}
+.lessons .progress-22 .pie .half-circle {
+  border-color: #ccf0e9;
+}
+.lessons .progress-23 .pie .half-circle {
+  border-color: #caefe8;
+}
+.lessons .progress-24 .pie .half-circle {
+  border-color: #c8eee7;
+}
+.lessons .progress-25 .pie .half-circle {
+  border-color: #c5eee6;
+}
+.lessons .progress-26 .pie .half-circle {
+  border-color: #c3ede5;
+}
+.lessons .progress-27 .pie .half-circle {
+  border-color: #c1ece4;
+}
+.lessons .progress-28 .pie .half-circle {
+  border-color: #beece3;
+}
+.lessons .progress-29 .pie .half-circle {
+  border-color: #bcebe2;
+}
+.lessons .progress-30 .pie .half-circle {
+  border-color: #baeae1;
+}
+.lessons .progress-31 .pie .half-circle {
+  border-color: #b8eae0;
+}
+.lessons .progress-32 .pie .half-circle {
+  border-color: #b5e9df;
+}
+.lessons .progress-33 .pie .half-circle {
+  border-color: #b3e8de;
+}
+.lessons .progress-34 .pie .half-circle {
+  border-color: #b1e8dd;
+}
+.lessons .progress-35 .pie .half-circle {
+  border-color: #aee7dc;
+}
+.lessons .progress-36 .pie .half-circle {
+  border-color: #ace6db;
+}
+.lessons .progress-37 .pie .half-circle {
+  border-color: #aae6da;
+}
+.lessons .progress-38 .pie .half-circle {
+  border-color: #a7e5d9;
+}
+.lessons .progress-39 .pie .half-circle {
+  border-color: #a5e4d8;
+}
+.lessons .progress-40 .pie .half-circle {
+  border-color: #a3e4d7;
+}
+.lessons .progress-41 .pie .half-circle {
+  border-color: #a1e3d6;
+}
+.lessons .progress-42 .pie .half-circle {
+  border-color: #9ee2d5;
+}
+.lessons .progress-43 .pie .half-circle {
+  border-color: #9ce2d4;
+}
+.lessons .progress-44 .pie .half-circle {
+  border-color: #9ae1d3;
+}
+.lessons .progress-45 .pie .half-circle {
+  border-color: #97e0d2;
+}
+.lessons .progress-46 .pie .half-circle {
+  border-color: #95e0d1;
+}
+.lessons .progress-47 .pie .half-circle {
+  border-color: #93dfd0;
+}
+.lessons .progress-48 .pie .half-circle {
+  border-color: #91decf;
+}
+.lessons .progress-49 .pie .half-circle {
+  border-color: #8edece;
+}
+.lessons .progress-50 .pie .half-circle {
+  border-color: #8cddcd;
+}
+.lessons .progress-51 .pie .half-circle {
+  border-color: #8adccc;
+}
+.lessons .progress-52 .pie .half-circle {
+  border-color: #87dccb;
+}
+.lessons .progress-53 .pie .half-circle {
+  border-color: #85dbca;
+}
+.lessons .progress-54 .pie .half-circle {
+  border-color: #83dac9;
+}
+.lessons .progress-55 .pie .half-circle {
+  border-color: #81dac8;
+}
+.lessons .progress-56 .pie .half-circle {
+  border-color: #7ed9c7;
+}
+.lessons .progress-57 .pie .half-circle {
+  border-color: #7cd8c6;
+}
+.lessons .progress-58 .pie .half-circle {
+  border-color: #7ad8c5;
+}
+.lessons .progress-59 .pie .half-circle {
+  border-color: #77d7c4;
+}
+.lessons .progress-60 .pie .half-circle {
+  border-color: #75d6c3;
+}
+.lessons .progress-61 .pie .half-circle {
+  border-color: #73d6c2;
+}
+.lessons .progress-62 .pie .half-circle {
+  border-color: #71d5c1;
+}
+.lessons .progress-63 .pie .half-circle {
+  border-color: #6ed4c0;
+}
+.lessons .progress-64 .pie .half-circle {
+  border-color: #6cd4bf;
+}
+.lessons .progress-65 .pie .half-circle {
+  border-color: #6ad3be;
+}
+.lessons .progress-66 .pie .half-circle {
+  border-color: #67d2bd;
+}
+.lessons .progress-67 .pie .half-circle {
+  border-color: #65d2bc;
+}
+.lessons .progress-68 .pie .half-circle {
+  border-color: #63d1bb;
+}
+.lessons .progress-69 .pie .half-circle {
+  border-color: #60d0ba;
+}
+.lessons .progress-70 .pie .half-circle {
+  border-color: #5ed0b9;
+}
+.lessons .progress-71 .pie .half-circle {
+  border-color: #5ccfb8;
+}
+.lessons .progress-72 .pie .half-circle {
+  border-color: #5aceb7;
+}
+.lessons .progress-73 .pie .half-circle {
+  border-color: #57ceb6;
+}
+.lessons .progress-74 .pie .half-circle {
+  border-color: #55cdb5;
+}
+.lessons .progress-75 .pie .half-circle {
+  border-color: #53ccb4;
+}
+.lessons .progress-76 .pie .half-circle {
+  border-color: #50ccb3;
+}
+.lessons .progress-77 .pie .half-circle {
+  border-color: #4ecbb2;
+}
+.lessons .progress-78 .pie .half-circle {
+  border-color: #4ccab1;
+}
+.lessons .progress-79 .pie .half-circle {
+  border-color: #4acab0;
+}
+.lessons .progress-80 .pie .half-circle {
+  border-color: #47c9af;
+}
+.lessons .progress-81 .pie .half-circle {
+  border-color: #45c8ae;
+}
+.lessons .progress-82 .pie .half-circle {
+  border-color: #43c8ad;
+}
+.lessons .progress-83 .pie .half-circle {
+  border-color: #40c7ac;
+}
+.lessons .progress-84 .pie .half-circle {
+  border-color: #3ec6ab;
+}
+.lessons .progress-85 .pie .half-circle {
+  border-color: #3cc6aa;
+}
+.lessons .progress-86 .pie .half-circle {
+  border-color: #3ac5a9;
+}
+.lessons .progress-87 .pie .half-circle {
+  border-color: #37c4a8;
+}
+.lessons .progress-88 .pie .half-circle {
+  border-color: #35c4a7;
+}
+.lessons .progress-89 .pie .half-circle {
+  border-color: #33c3a6;
+}
+.lessons .progress-90 .pie .half-circle {
+  border-color: #30c2a5;
+}
+.lessons .progress-91 .pie .half-circle {
+  border-color: #2ec2a4;
+}
+.lessons .progress-92 .pie .half-circle {
+  border-color: #2cc1a3;
+}
+.lessons .progress-93 .pie .half-circle {
+  border-color: #2ac0a2;
+}
+.lessons .progress-94 .pie .half-circle {
+  border-color: #27c0a1;
+}
+.lessons .progress-95 .pie .half-circle {
+  border-color: #25bfa0;
+}
+.lessons .progress-96 .pie .half-circle {
+  border-color: #23be9f;
+}
+.lessons .progress-97 .pie .half-circle {
+  border-color: #20be9e;
+}
+.lessons .progress-98 .pie .half-circle {
+  border-color: #1ebd9d;
+}
+.lessons .progress-99 .pie .half-circle {
+  border-color: #1cbc9c;
+}
+.lessons .progress-100 .pie .half-circle {
+  border-color: #1abc9c;
+}
+/******************** End Pie-Wrapper Styles ******************/
+/*********************** Button Styles *********************/
+/*** Classes Buttons ***/
+.btn-green.btn-outline,
+input.btn-green.btn-outline[type="submit"] {
+  margin-top: 2em;
+  margin-left: 4em;
+}
+/********************** Nav Styles ****************************/
+header.group {
+  background-color: rgba(136,176,232,0.7);
 }
 .navbar {
-    margin-left: 1em;
-    margin-right: 1em;
+  padding: 1.65em;
+}
+.navbar a {
+  color: #fff;
+}
+.navbar a:hover {
+  color: #fff;
+}
+/********************** End Nav Styles ************************/
+/********************** General Styles ************************/
+.lesson-pie {
+  margin-top: 26%;
+}
+.homepage-image {
+  background-image: url("/images/Index-page-chalk.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.landing h1 {
+  font-size: 7em;
+  color: #fff;
+}
+.landing .title {
+  text-align: center;
+}
+.title img {
+  width: 0.75em;
+  margin-left: 0.06em;
+  margin-right: 0.06em;
+}
+.landing h1 span {
+  color: #4eff0b;
+}
+.title p {
+  font-size: 2em;
+  color: #fff;
+}
+.landing label {
+  color: #fff;
+}
+@media screen and (max-width: 415px) {
+  .landing h1 {
+    font-size: 5em;
+  }
 }

@@ -1,0 +1,35 @@
+{% extends 'layout.html' %} {% block title %} {{course.title }} - {{ section.title }} {% endblock %} {% block head %} {% parent %}
+<!--<link rel="stylesheet" href="custom.css">-->
+{% endblock %} {% block nav %} {% parent %} {% endblock %} {% block content %}
+<main class="units-row units-padding">
+  <section class="unit-100">
+    <h1>{{ section.title }}<small> - {{ section.desc }}</small></h1>
+
+    <hr>
+    <div class="units-row end">
+      <div class="unit-60">
+        {{ section.videoLink|safe }}
+      </div>
+      <div class="unit-40">
+        <h4>Other Materials</h4>
+        <hr> {% if section.otherMaterials %}
+        <ul class="units-row end">
+          {% for x in section.otherMaterials %}
+
+          <li class="unit-25">{{ x }}</li>
+
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <article class="unit-100">
+    <hr> {{section.content}}
+
+  </article>
+  <div class="unit-push-right unit-25">
+    <a href="/class/{{course.permalink}}/lesson/lesson-{{lessonId}}"><button class="btn btn-green btn-outline">I'm Done!</button></a>
+  </div>
+</main>
+{% endblock %}

@@ -5,9 +5,26 @@
 {% block head %}
   {% parent %}
   <!--<link rel="stylesheet" href="custom.css">-->
+  <style>
+    body {
+      background-image: url('/images/Index-page-chalk.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
-<p>This is just an awesome page, but more will follow.</p>
-<a href="/classes">Check out our classes.</a>
+<main class="units-row units-padding">
+  <article class="units-row-end landing">
+    <section class="unit-60 title">
+      <h1 class=""><span>Spr</span><img src="/images/SproutLogo.png" alt="logo"/>ut</h1>
+      
+      <p>A Learning Management System</p>
+    </section>
+    <section class="unit-40">
+      {% include "./partials/registerForm.html" %}
+    </section>
+  </article>
+</main>
 {% endblock %}
