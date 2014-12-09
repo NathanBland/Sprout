@@ -16,22 +16,21 @@
 <main class="units-row units-padding">
   <article class="units-row-end">
     <section class="unit-75">
-    {% for course in classes %}
-      <h1>{{ course.title }}</h1>
-      <p>{{ course.desc }}</p>
-      {% for lesson in course.lessons %} {% if loop.first %}
-      <div id="accordion-2">{% endif %}
+      <h1>Class List</h1>
+      <div id="accordion-1" class="accordion">
+      {% for course in classes %}
+        <a href="#panel{{ loop.index }}" class="accordion-title">{{ course.title }} Lesson: {{lesson.lessonId}}<span class="accordion-toggle accordion-toggle-closed"></span></a>
         <div class="units-row">
-          <a href="#panel{{ loop.index }}" class="accordion-title">{{ lesson.title }} Lesson: {{lesson.lessonId}}<span class="accordion-toggle accordion-toggle-closed"></span></a>
           <div id="panel{{ loop.index }}" class="accordion-panel units-row-end">
-            <div class="unit-70">{{ lesson.desc }}</div>
+            <div class="unit-70"><p>{{ course.desc }}</p></div>
             
-            <button class="btn btn-green btn-outline">ENROLL</button>
+            <form action="/enroll/{{course.permalink}}" method="POST"><button class="btn btn-green btn-outline">ENROLL</button></form>
           </div>
         </div>
-        {% if loop.last %}</div>{% endif %}{% endfor %}{% endfor %}
+      {% endfor %}
+      </div>
     </section>
   </article>
 </main>
-
+<script type="text/javascript" src="/scripts/classAccordion.js"></script>
 {% endblock %}

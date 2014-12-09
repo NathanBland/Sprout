@@ -26,8 +26,12 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/classes">Classes</a></li>
+                {% if user %}
+                <li><a href="/dashboard">Dashboard</a></li>
+                {% else %}
                 <li><a href="/purpose">/Purpose</a></li>
                 <li><a href="/contact">Get In Touch</a></li>
+                {% endif %}
             </ul>
         </nav>
         <nav class="navbar navbar-right">

@@ -4,6 +4,7 @@ var ensureAuthenticated = ensureLogin.ensureAuthenticated;
 var router = module.exports = express.Router();
 var app = express();
 var Course = require('../models/Classes');
+var User = require('../models/User.js');
 
 router.get('/', function(req, res, next) {
     if (req.user) {
@@ -35,7 +36,7 @@ router.get('/purpose', function(req, res, next) {
 router.get('/classes', function(req, res, next) {
     Course.find({}, function(err, classes) {
         console.log(classes);
-        res.render('courses', {
+        res.render('classes', {
             classes: classes,
             title: "Sprout - Course Catalog"
         });
@@ -57,9 +58,9 @@ router.param(':classTitle', function(req, res, next, classTitle) {
 
 router.get('/class/:classTitle/lesson/lesson-:lessonId/section/:sectionId', function(req, res, next) {
     var course = res.locals.course;
-    var lesson = course.lessons[req.params.lessonId-1]; //correct for friendly lesson numbers
-    var section = course.lessons[req.params.lessonId-1].sections[req.params.sectionId-1]; //correct for friendly section numbers
-    
+    var lesson = course.lessons[req.params.lessonId - 1]; //correct for friendly lesson numbers
+    var section = course.lessons[req.params.lessonId - 1].sections[req.params.sectionId - 1]; //correct for friendly section numbers
+
     res.render('section_details', {
         lessonId: lesson.lessonId,
         section: section
@@ -68,7 +69,7 @@ router.get('/class/:classTitle/lesson/lesson-:lessonId/section/:sectionId', func
 
 router.get('/class/:classTitle/lesson/lesson-:lessonId', function(req, res, next) {
     var course = res.locals.course;
-    var lesson = course.lessons[req.params.lessonId-1]; //correct for friendly lesson numbers
+    var lesson = course.lessons[req.params.lessonId - 1]; //correct for friendly lesson numbers
     res.render('lesson_details', {
         lesson: lesson
     });
@@ -79,6 +80,69 @@ router.get('/class/:classTitle', function(req, res, next) {
     res.render('class_details');
 });
 
+router.post('/enroll/:classTitle', function(req, res, next) {
+    if (!req.user) {
+        return res.redirect('/login');
+    }
+
+    //console.log(req.user._id);
+    Course.findOne({
+            "permalink": req.params.classTitle
+        },
+        function(err, course) {
+            if (err) {
+                console.warn(err);
+                return res.redirect('/classes');
+            }
+            var enrolled = false;
+            course.students.forEach(function(element, index, array) {
+                if (element.studnet == req.user._id) {
+                    enrolled = true;
+                }
+            });
+            if (!enrolled) {
+                course.students.push({
+                    student: req.user._id
+                });
+                course.save(function(err) {
+                    console.warn(err);
+                    //return res.redirect('/classes');
+                });
+            }
+
+            console.log(course);
+        });
+    User.findOne({
+        _id: req.user.id
+    }, function(err, user) {
+        if (err) {
+            console.warn(err);
+            return res.redirect('/classes');
+        }
+        var enrolled = false;
+        user.courses.forEach(function(element, index, array) {
+            if (element.classId == req.params.classTitle) {
+                enrolled = true;
+            } 
+            if (!enrolled){
+                user.courses.push({
+                    classId: req.params.classTitle
+                });
+                user.save(function(err) {
+                    console.warn(err);
+                });
+            }
+            else {
+                console.log("already enrolled!");
+            }
+        });
+
+        //console.log(user);
+    });
+
+
+    res.redirect('/class/' + req.params.classTitle);
+});
 //###########
 //teacher routers
 //###########
@@ -90,14 +154,56 @@ router.get('/add/class', function(req, res, next) {
     if (!req.user.teacher) {
         return res.redirect('/dashboard');
     }
-    res.render('add', {
+    res.render('add_class', {
         title: "Create A Class"
     });
 });
 router.post('/add/class', makeCourse);
 
-function makeCourse(req, res, next) {
+function permalink(title) {
+    return title.toLowerCase().replace(/\W+/g, '-').replace(/-$/, '');
+}
 
+function makeCourse(req, res, next) {
+    console.log(req.body);
+
+    var data = req.body;
+    var perma = permalink(req.body.classTitle);
+    var course = req.user.newClass();
+    var lessons = [];
+    if (data.lesson instanceof Array) {
+        for (var i = 0; i < data.lesson.length; i++) {
+            lessons.push({
+                "lessonId": i + 1, //value adjusted for friendly URLS.
+                "title": data.lesson[i]
+            });
+        }
+
+    }
+    else {
+        lessons = [{
+            "lessonId": 1,
+            "title": data.lesson
+        }];
+    }
+    console.log(lessons);
+    course.set({
+        title: data.classTitle,
+        permalink: perma,
+        desc: data.desc || '',
+        lessons: lessons || [],
+        students: []
+    });
+    course.save(function(err) {
+        if (err) {
+            return res.render('add_class', {
+                title: "Problem Adding Class: " + course.title
+            })
+        }
+        else {
+            res.redirect('/dashboard');
+        }
+    });
 }
 
 router.get('/add/lesson', function(req, res, next) {

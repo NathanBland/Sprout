@@ -16,7 +16,10 @@ var lessonSchema = new mongoose.Schema({
 
 var classesSchema = new mongoose.Schema({
     classId: String,
-    enrolled: Date,
+    enrolled: {
+        type: Date,
+        default: Date.now
+    },
     lessons: [lessonSchema]
 });
 
@@ -43,7 +46,7 @@ var User = mongoose.Schema({
         email: String,
         name: String
     },
-    classes: [classesSchema],
+    courses: [classesSchema],
     created: {
         type: Date,
         default: Date.now

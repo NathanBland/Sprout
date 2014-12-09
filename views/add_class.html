@@ -1,23 +1,49 @@
-<form method="post" action="/add/class" class="forms">
-    <label>
-        Class Title
-        <input type="text" name="classTitle" class="width-100" placeholder="e.g. Understanding Express" />
-    </label>
-    <label>
-        Class Description
-        <input type="text" name="desc" class="width-100" placeholder="e.g. Understanding Express is a ..." />
-    </label>
-    <label>
-        Instructor
-        <input type="text" name="instructor" class="width-100" placeholder="e.g. John Doe" />
-    </label>
-    <label>
-        Lesson 
-        <input type="text" name="Lesson " class="width-100" placeholder="" />
-        <button class="btn btn-green">Additional Lesson</button>
-    </label>
-    <p>
-        <button class="btn btn-blue">Add Class</button>
-    </p>
-</form>
-// Create a js to dynamically add a lesson input field so that a variable number of lessons are possible.
+{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block head %}
+  {% parent %}
+  <!--<link rel="stylesheet" href="custom.css">-->
+{% endblock %}
+
+{% block content %}
+<main class="units-row units-padding">
+    <article class="units-row-end">
+        <section class="unit-30">
+            <h1>Create a new class</h1>
+            <hr>
+            <form method="post" action="/add/class" class="forms">
+                <label>
+                    Class Title
+                    <input type="text" name="classTitle" class="width-100" placeholder="e.g. Understanding Express" />
+                </label>
+                <label>
+                    Class Description
+                    <input type="text" name="desc" class="width-100" placeholder="e.g. Understanding Express is a ..." />
+                </label>
+                <!--<label>
+                    Instructor
+                    <input type="text" name="instructor" class="width-100" placeholder="e.g. John Doe" />
+                </label>--><!-- We should get this server side. -->
+                <div id="lessons">
+                <label class="lesson">
+                    Lesson
+                    
+                    <input type="text" name="lesson" class="width-100" placeholder="" />
+                    
+                </label>
+                </div>
+                <p>
+                <button id="add_lesson" type="button" class="btn btn-green">Additional Lesson</button>
+                </p>
+                <p>
+                    <button class="btn btn-blue">Add Class</button>
+                </p>
+            </form>
+        </section>
+    </article>
+</main>
+<script src="/scripts/form.js"></script>
+<!--// Create a js to dynamically add a lesson input field so that a variable number of lessons are possible.-->
+{% endblock %}
